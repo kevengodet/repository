@@ -6,7 +6,7 @@ use Adagio\Repository\Exception\NotFound;
 use Adagio\DataStore\DataStore;
 use Adagio\Rad\Traits\GuessIdentifier;
 
-final class Repository
+final class Repository implements RepositoryInterface
 {
     use GuessIdentifier;
 
