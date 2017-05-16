@@ -78,7 +78,7 @@ trait RepositoryTrait
     public function get($identifier)
     {
         if (!$this->store->has($identifier)) {
-            throw NotFound::fromId($identifier);
+            throw NotFound::fromIdentifier($identifier);
         }
 
         return $this->denormalize($this->store->get($identifier));
