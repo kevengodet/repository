@@ -90,6 +90,10 @@ trait RepositoryTrait
      */
     public function remove($identifier)
     {
+        if (is_object($identifier)) {
+            $identifier = $this->guessIdentifierOrHash($identifier);
+        }
+
         $this->store->remove($identifier);
     }
 

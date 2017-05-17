@@ -43,9 +43,10 @@ interface RepositoryInterface
 
     /**
      *
-     * @param string $identifier
+     * @param string|object $identifier Object identifier or object instance
      */
     public function remove($identifier);
+
     /**
      *
      * @param string $property

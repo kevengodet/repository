@@ -71,10 +71,10 @@ class Bar
 var_dump($k1 = $repository->store(new Foo('yo')));
 var_dump($repository->store(new Baz($k2 = 'id_'.uniqid(), 'yo')));
 var_dump($repository->get($k1));
-var_dump($repository->get($k2));
+var_dump($e2 = $repository->get($k2));
 var_dump($repository->has($k1));
 var_dump($repository->findOneBy('bar', 'yo'));
 var_dump($repository->findAll());
 $repository->remove($k1);
-$repository->remove($k2);
+$repository->remove($e2);
 var_dump($repository->has($k1));
