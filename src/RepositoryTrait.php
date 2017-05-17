@@ -99,16 +99,11 @@ trait RepositoryTrait
      * @param mixed $value
      * @param string $comparator
      *
-     * @return object
+     * @return object[]
      */
     public function findBy($property, $value, $comparator = '=')
     {
-        $entities = [];
-        foreach ($this->store->findBy($property, $value, $comparator) as $result) {
-            $entities[] = $this->denormalize($result);
-        }
-
-        return $entities;
+        return $this->denormalizeArray($this->store->findBy($property, $value, $comparator));
     }
 
     /**
@@ -128,6 +123,15 @@ trait RepositoryTrait
         }
 
         throw NotFound::fromProperty($property, $comparator, $result);
+    }
+
+    /**
+     *
+     * @return object[]
+     */
+    public function findAll()
+    {
+        return $this->denormalizeArray($this->store->findAll());
     }
 
     /**
@@ -176,5 +180,21 @@ trait RepositoryTrait
         }
 
         return $entity;
+    }
+
+    /**
+     *
+     * @param array $results
+     *
+     * @return array
+     */
+    private function denormalizeArray($results)
+    {
+        $entities = [];
+        foreach ($results as $result) {
+            $entities[] = $this->denormalize($result);
+        }
+
+        return $entities;
     }
 }

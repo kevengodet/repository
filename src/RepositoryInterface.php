@@ -52,7 +52,7 @@ interface RepositoryInterface
      * @param mixed $value
      * @param string $comparator
      *
-     * @return object
+     * @return object[]
      */
     public function findBy($property, $value, $comparator = '=');
 
@@ -67,4 +67,10 @@ interface RepositoryInterface
      * @throws NotFound
      */
     public function findOneBy($property, $value, $comparator = '=');
+
+    /**
+     *
+     * @return object[]
+     */
+    public function findAll();
 }

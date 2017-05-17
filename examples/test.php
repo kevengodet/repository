@@ -74,6 +74,7 @@ var_dump($repository->get($k1));
 var_dump($repository->get($k2));
 var_dump($repository->has($k1));
 var_dump($repository->findOneBy('bar', 'yo'));
+var_dump($repository->findAll());
 $repository->remove($k1);
 $repository->remove($k2);
 var_dump($repository->has($k1));
