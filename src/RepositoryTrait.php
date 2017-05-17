@@ -95,6 +95,43 @@ trait RepositoryTrait
 
     /**
      *
+     * @param string $property
+     * @param mixed $value
+     * @param string $comparator
+     *
+     * @return object
+     */
+    public function findBy($property, $value, $comparator = '=')
+    {
+        $entities = [];
+        foreach ($this->store->findBy($property, $value, $comparator) as $result) {
+            $entities[] = $this->denormalize($result);
+        }
+
+        return $entities;
+    }
+
+    /**
+     *
+     * @param string $property
+     * @param mixed $value
+     * @param string $comparator
+     *
+     * @return object
+     *
+     * @throws NotFound
+     */
+    public function findOneBy($property, $value, $comparator = '=')
+    {
+        foreach ($this->store->findBy($property, $value, $comparator) as $result) {
+            return $this->denormalize($result);
+        }
+
+        throw NotFound::fromProperty($property, $comparator, $result);
+    }
+
+    /**
+     *
      * @param object $entity
      *
      * @return array

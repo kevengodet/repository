@@ -73,6 +73,7 @@ var_dump($repository->store(new Baz($k2 = 'id_'.uniqid(), 'yo')));
 var_dump($repository->get($k1));
 var_dump($repository->get($k2));
 var_dump($repository->has($k1));
+var_dump($repository->findOneBy('bar', 'yo'));
 $repository->remove($k1);
 $repository->remove($k2);
 var_dump($repository->has($k1));

@@ -46,4 +46,25 @@ interface RepositoryInterface
      * @param string $identifier
      */
     public function remove($identifier);
+    /**
+     *
+     * @param string $property
+     * @param mixed $value
+     * @param string $comparator
+     *
+     * @return object
+     */
+    public function findBy($property, $value, $comparator = '=');
+
+    /**
+     *
+     * @param string $property
+     * @param mixed $value
+     * @param string $comparator
+     *
+     * @return object
+     *
+     * @throws NotFound
+     */
+    public function findOneBy($property, $value, $comparator = '=');
 }
