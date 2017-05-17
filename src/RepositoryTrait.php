@@ -126,7 +126,7 @@ trait RepositoryTrait
             return $this->denormalize($result);
         }
 
-        throw NotFound::fromProperty($property, $comparator, $result);
+        throw NotFound::fromProperty($property, $comparator, $value);
     }
 
     /**
