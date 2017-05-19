@@ -25,6 +25,6 @@ final class NotFound extends \OutOfBoundsException
      */
     static public function fromProperty($name, $comparator, $value)
     {
-        return new self("No entity found where '$value $comparator $name'.");
+        return new self("No entity found where: '$name' $comparator '$value'.");
     }
 }
